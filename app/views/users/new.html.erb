@@ -1,0 +1,46 @@
+<center><h1>Sign Up</h1>
+  <%= form_for :user, url: users_path do |f| %> 
+  <% if @user.errors.any? %>
+  <br><div id="error_explanation">
+    <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %></br>
+  <p>
+   <%= f.label :name%><br>
+   <%= f.text_field :name , placeholder: "Enter Name",autofocus: true %>
+  </p>
+ <p>
+   <%= f.label :email%><br>
+   <%= f.email_field :email , placeholder: "Enter Email",autofocus: true %>
+  </p>
+  <p>
+   <%= f.label :phone_no %><br>
+    <%= f.telephone_field :phone_no, placeholder: "Enter Mobile no" %>
+  </p>
+   <p>
+    <%= f.label :dob %><br>
+   <%= f.date_field :dob, max: Date.today %>
+  </p>
+ 
+  <p>
+   <%= f.label :password %><br>
+   <%= f.password_field :password , placeholder: "Enter Password"%>
+  </p>
+  <p>
+    <%= f.label :confirm_password %><br>
+    <%= f.password_field :password_confirmation , placeholder: "Re-enter Password"%>
+  </p>
+ 
+  <p>
+   <%= f.submit "submit",controller: 'users' %>
+     <%= link_to 'Back' , welcome_index_path %>
+  </p>
+<% end %></center>
